@@ -4,7 +4,7 @@
 
 .wrapper{
     width: 80%;
-    height: 30rem;
+    height: 20rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -31,5 +31,16 @@
     i{
         font-size: 5rem;
         margin-top: 5px;
+    }
+}
+
+.game{
+    margin: 0 auto;
+    width: 15rem;
+    height: 2.5rem;
+    button{
+        width: 100%;
+        height: 100%;
+        font-size: 1.5rem;
     }
 }
