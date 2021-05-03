@@ -1,0 +1,35 @@
+.heading{
+    text-align: center;
+}
+
+.wrapper{
+    width: 80%;
+    height: 30rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+
+    .player, .computer{
+        border: 2px solid black;
+    }
+
+    .play{
+        display: grid;
+        grid-gap: 2rem;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.container{
+    cursor: pointer;
+    width: 6rem;
+    height: 6rem;
+    border: 2px solid black;
+    text-align: center;
+
+    i{
+        font-size: 5rem;
+        margin-top: 5px;
+    }
+}

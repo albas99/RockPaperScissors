@@ -5,19 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
+    <div class="heading">
+    <h1>Rock Paper Scissors</h1>
+    <p>The first to get 5 points wins</p>
+    </div>
     <div class="wrapper">
-        <div class="rock-container">
+        <div class="player">
+        <h2>Player</h2>
+    <div class="play">
+        <div class="rock-container container" onclick="playRound()">
             <i class="far fa-hand-rock"></i>
         </div>
-        <div class="rock-container">
+        <div class="paper-container container" onclick="playRound()">
+            <i class="far fa-hand-paper"></i>
+        </div>
+        <div class="scissors-container container" onclick="playRound()">
+            <i class="far fa-hand-scissors"></i>
+        </div>
+    </div>
+    </div>
+    <div class="computer">
+    <h2>Computer</h2>
+    <div class="play">
+        <div class="rock-container container">
             <i class="far fa-hand-rock"></i>
         </div>
-        <div class="rock-container">
-            <i class="far fa-hand-rock"></i>
+        <div class="paper-container container">
+            <i class="far fa-hand-paper"></i>
         </div>
+        <div class="scissors-container container">
+            <i class="far fa-hand-scissors"></i>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="game">
+        <button>Restart Game</button>
     </div>
     <script src="index.js"></script>
 </body>
