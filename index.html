@@ -17,35 +17,37 @@
         <div class="player">
         <h2>Player</h2>
     <div class="play">
-        <div class="rock-container container" onclick="playRound()">
+        <button class="player-button container" id="rock" data-button="rock">
             <i class="far fa-hand-rock"></i>
-        </div>
-        <div class="paper-container container" onclick="playRound()">
+        </button>
+        <button class="player-button container" id="paper" data-button="paper">
             <i class="far fa-hand-paper"></i>
-        </div>
-        <div class="scissors-container container" onclick="playRound()">
+        </button>
+        <button class="player-button container" id="scissors" data-button="scissors">
             <i class="far fa-hand-scissors"></i>
-        </div>
+        </button>
     </div>
+    <div id="playerScore"></div>
     </div>
     <div class="computer">
     <h2>Computer</h2>
+    <!-- <h1>0</h1> -->
     <div class="play">
-        <div class="rock-container container">
+        <button class="container">
             <i class="far fa-hand-rock"></i>
-        </div>
-        <div class="paper-container container">
+        </button>
+        <button class="container">
             <i class="far fa-hand-paper"></i>
-        </div>
-        <div class="scissors-container container">
+        </button>
+        <button class="container">
             <i class="far fa-hand-scissors"></i>
-        </div>
+        </button>
+    </div>
+    <div id="computerScore"></div>
     </div>
     </div>
-    </div>
-    <div class="game">
-        <button>Restart Game</button>
-    </div>
+        <div class="restart-button"><button class="restart-game">Restart Game</button></div>
+    <div class="display-result"></div>
     <script src="index.js"></script>
 </body>
 </html>

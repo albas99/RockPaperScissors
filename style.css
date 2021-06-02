@@ -29,7 +29,6 @@
 }
 
 .container {
-  cursor: pointer;
   width: 6rem;
   height: 6rem;
   border: 2px solid black;
@@ -41,15 +40,27 @@
   margin-top: 5px;
 }
 
-.game {
-  margin: 0 auto;
-  width: 15rem;
-  height: 2.5rem;
+.player-button {
+  cursor: pointer;
 }
 
-.game button {
-  width: 100%;
-  height: 100%;
-  font-size: 1.5rem;
+.selected {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
+.active {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.restart-button {
+  text-align: center;
+}
+
+.game {
+  font-size: 1.6rem;
 }
 /*# sourceMappingURL=style.css.map */
