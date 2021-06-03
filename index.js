@@ -8,7 +8,7 @@ const scissors = document.querySelector('#scissors');
 const results = document.querySelector(".display-result");
 
 const resultPara = document.createElement('p');
-results.appendChild('resultPara')
+results.appendChild(resultPara);
 
 // Declare function computerPlay
 computerPlay = () => {
@@ -29,7 +29,7 @@ function playRound(playerSelection, computerSelection) {
   playerSelection = this.dataset.button
   playerSelection = playerSelection.toLowerCase();
   computerSelection = computerPlay().toLowerCase();
-  console.log("playerSelection: ", playerSelection, " computerSelection: ", computerSelection);
+  resultPara.textContent = ("playerSelection: ", playerSelection, " computerSelection: ", computerSelection);
 
   if (playerSelection == 'rock' && computerSelection == 'paper') {
     computerScore++;
