@@ -5,8 +5,10 @@ const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 
+const results = document.querySelector(".display-result");
 
-
+const resultPara = document.createElement('p');
+results.appendChild('resultPara')
 
 // Declare function computerPlay
 computerPlay = () => {
