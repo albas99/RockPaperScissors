@@ -7,6 +7,7 @@ const scissors = document.querySelector('#scissors');
 
 
 
+
 // Declare function computerPlay
 computerPlay = () => {
   // Declare selection variable to store random selection from array variable
@@ -63,23 +64,27 @@ function playRound(playerSelection, computerSelection) {
 
 // console.log(playRound(playerSelection, computerSelection));
 
-function game() {
-  let rounds = 5;
-  // for(let i = 0; i < 5; i++){
-    // let playerSelection = prompt("Choose Rock, Paper or Scissors");
-  let playerSelection = this.dataset.button;
-    const computerSelection = computerPlay();
-    console.log(playRound(playerSelection, computerSelection));
-  // }
-  if(computerScore > playerScore){
-    console.log('You Lose!');
-  }
-  else if(computerScore < playerScore){
-    console.log('You win!');
-  }
-  else{
-    console.log('Tie!');
-  }
-}
+// function game() {
+//   // let rounds = 5;
+//   // for(let i = 0; i < 5; i++){
+//     // let playerSelection = prompt("Choose Rock, Paper or Scissors");
+//   let playerSelection = this.dataset.button;
+//     const computerSelection = computerPlay();
+//     console.log(playRound(playerSelection, computerSelection));
+//   // }
+//   if(computerScore > playerScore){
+//     console.log('You Lose!');
+//   }
+//   else if(computerScore < playerScore){
+//     console.log('You win!');
+//   }
+//   else{
+//     console.log('Tie!');
+//   }
+// }
 
 // game();
+
+rock.addEventListener('click', playRound);
+paper.addEventListener('click', playRound);
+scissors.addEventListener('click', playRound);
