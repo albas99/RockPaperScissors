@@ -1,77 +1,121 @@
-// Declare array variable with rock, paper, scissors
-const options = ["Rock", "Paper", "Scissors"];
+// PLAYER ELEMENTS
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+
+// RESULTS AND RESTART SECTIONS
+const results = document.querySelector(".display-result");
+const restart = document.querySelector('.restart-button');
+
+rock.addEventListener('click', playRound);
+paper.addEventListener('click', playRound);
+scissors.addEventListener('click', playRound);
+restart.addEventListener('click', game);
+
 
 // Declare function computerPlay
-computerPlay = () => {
-  // Declare selection variable to store random selection from array variable
-  // Assign selection variable to random selection from array variable
-  const selection = options[Math.floor((Math.random()) * options.length)];
-  // console.log(selection);
-  return selection;
+function computerPlay() {
+  const number = Math.floor(Math.random() * 1000);
+  if (number % 3 === 0) {
+    return "rock";
+  }
+  if (number % 3 === 1) {
+    return "paper";
+  }
+  return "scissors";
 }
 // Call function computerPlay
 computerPlay();
 
-playerScore = 0;
-computerScore = 0;
+let playerScore = 0;
+let computerScore = 0;
 
 // Declare function  playRound with with playerSelection and computerSelection
 function playRound(playerSelection, computerSelection) {
-  playerSelection = playerSelection.toLowerCase();
-  computerSelection = computerPlay().toLowerCase();
-  console.log("playerSelection: ", playerSelection, " computerSelection: ", computerSelection);
+  playerSelection = this.dataset.button
+  playerSelection = playerSelection.toUpperCase();
+  computerSelection = computerPlay().toUpperCase();
+  
+  const resultPara = document.createElement("p");
+  results.prepend(resultPara);
 
-  if (playerSelection == 'rock' && computerSelection == 'paper') {
+  const roundWinner = document.createElement('p');
+  results.prepend(roundWinner);
+
+  const finalWinner = document.createElement("p");
+  results.prepend(finalWinner);
+  finalWinner.style.fontSize = '2rem';
+  finalWinner.style.fontWeight = '900';
+  
+  
+  if (playerSelection === 'ROCK' && computerSelection === 'PAPER') {
     computerScore++;
-    return playerScore + ' ' + computerScore;
+    roundWinner.textContent += `${computerSelection} beats ${playerSelection}
+    (Player Score: ${playerScore}, Computer Score: ${computerScore})`
+    
   }
-  else if (playerSelection == 'rock' && computerSelection == 'scissors') {
+  else if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS') {
     playerScore++;
-    return playerScore + ' ' + computerScore;
+        roundWinner.textContent += `${playerSelection} beats ${computerSelection}
+    (Player Score: ${playerScore}, Computer Score: ${computerScore})`;
+
+
   }
-  else if (playerSelection == 'paper' && computerSelection == 'rock') {
+  else if (playerSelection === 'PAPER' && computerSelection === 'ROCK') {
     playerScore++;
-    return playerScore + ' ' + computerScore;
+        roundWinner.textContent += `${playerSelection} beats ${computerSelection}
+    (Player Score: ${playerScore}, Computer Score: ${computerScore})`;
+
+
   }
-  else if (playerSelection == 'paper' && computerSelection == 'scissors') {
+  else if (playerSelection === 'PAPER' && computerSelection === 'SCISSORS') {
     computerScore++;
-    return playerScore + ' ' + computerScore;
+        roundWinner.textContent += `${computerSelection} beats ${playerSelection}
+    (Player Score: ${playerScore}, Computer Score: ${computerScore})`;
+
+
   }
-  else if (playerSelection == 'scissors' && computerSelection == 'rock') {
+  else if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK') {
     computerScore++;
-    return playerScore + ' ' + computerScore;
+        roundWinner.textContent += `${computerSelection} beats ${playerSelection}
+    (Player Score: ${playerScore}, Computer Score: ${computerScore})`;
+
+
   }
-  else if (playerSelection == 'scissors' && computerSelection == 'paper') {
+  else if (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') {
     playerScore++;
-    return playerScore + ' ' + computerScore;
+        roundWinner.textContent += `${playerSelection} beats ${computerSelection}
+    (Player Score: ${playerScore}, Computer Score: ${computerScore})`;
+
+
   }
 
   else {
-    return 'Tie!';
+    resultPara.textContent += `Player selects ${playerSelection} and computer selects ${computerSelection}:`
+    roundWinner.textContent += `Tie!
+        (Player Score: ${playerScore}, Computer Score: ${computerScore})`; // displays tie
+
   }
+    // CHECKS NUMBER OF ROUNDS IN PROPORTION TO WINS.
+    if (computerScore > playerScore && computerScore >= 5) {
+      finalWinner.textContent = `Computer Wins and You Lose!`;
+      restart.style.display = "block";
+      console.log("Computer Wins and You Lose!");
+      rock.removeEventListener("click", playRound);
+      paper.removeEventListener("click", playRound);
+      scissors.removeEventListener("click", playRound);
+    } else if (playerScore > computerScore && playerScore >= 5) {
+      finalWinner.textContent = `You Win and Computer Loses!`;
+      restart.style.display = "block";
+      console.log("You Win and Computer Loses!");
+      rock.removeEventListener("click", playRound);
+      paper.removeEventListener("click", playRound);
+      scissors.removeEventListener("click", playRound);
+    }
+
 }
 
-
-
-
-// console.log(playRound(playerSelection, computerSelection));
-
+// RESTARTS GAME BY RELOADING THE PAGE
 function game() {
-  let rounds = 5;
-  for(let i = 0; i < 5; i++){
-    let playerSelection = prompt("Choose Rock, Paper or Scissors");
-    const computerSelection = computerPlay();
-    console.log(playRound(playerSelection, computerSelection));
-  }
-  if(computerScore > playerScore){
-    console.log('You Lose!');
-  }
-  else if(computerScore < playerScore){
-    console.log('You win!');
-  }
-  else{
-    console.log('Tie!');
-  }
+  window.location.reload('true');
 }
-
-game();

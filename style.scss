@@ -22,25 +22,44 @@
 }
 
 .container{
-    cursor: pointer;
     width: 6rem;
     height: 6rem;
     border: 2px solid black;
     text-align: center;
-
     i{
         font-size: 5rem;
         margin-top: 5px;
     }
 }
 
-.game{
-    margin: 0 auto;
-    width: 15rem;
-    height: 2.5rem;
-    button{
-        width: 100%;
-        height: 100%;
-        font-size: 1.5rem;
-    }
+.player-button{
+    cursor: pointer;
+}
+
+.selected{
+    transform: scale(1.5);
+    transition: all .5s ease;
+}
+
+
+.active{
+    transform: scale(1.2);
+}
+
+.restart-button{
+    text-align: center;
+    display: none;
+}
+
+.restart-game{
+    font-size: 1.6rem;
+}
+
+.head{
+    display: flex;
+    justify-content: space-between;
+}
+
+.display-result{
+    text-align: center;
 }
