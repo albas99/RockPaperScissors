@@ -1,92 +1,121 @@
-// Declare array variable with rock, paper, scissors
-const options = ["Rock", "Paper", "Scissors"];
-
+// PLAYER ELEMENTS
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 
+// RESULTS AND RESTART SECTIONS
 const results = document.querySelector(".display-result");
-
-const resultPara = document.createElement('p');
-results.appendChild(resultPara);
-
-// Declare function computerPlay
-computerPlay = () => {
-  // Declare selection variable to store random selection from array variable
-  // Assign selection variable to random selection from array variable
-  const selection = options[Math.floor((Math.random()) * options.length)];
-  // console.log(selection);
-  return selection;
-}
-// Call function computerPlay
-computerPlay();
-
-playerScore = 0;
-computerScore = 0;
-
-// Declare function  playRound with with playerSelection and computerSelection
-function playRound(playerSelection, computerSelection) {
-  playerSelection = this.dataset.button
-  playerSelection = playerSelection.toLowerCase();
-  computerSelection = computerPlay().toLowerCase();
-  resultPara.textContent = ("playerSelection: ", playerSelection, " computerSelection: ", computerSelection);
-
-  if (playerSelection == 'rock' && computerSelection == 'paper') {
-    computerScore++;
-    return playerScore + ' ' + computerScore;
-  }
-  else if (playerSelection == 'rock' && computerSelection == 'scissors') {
-    playerScore++;
-    return playerScore + ' ' + computerScore;
-  }
-  else if (playerSelection == 'paper' && computerSelection == 'rock') {
-    playerScore++;
-    return playerScore + ' ' + computerScore;
-  }
-  else if (playerSelection == 'paper' && computerSelection == 'scissors') {
-    computerScore++;
-    return playerScore + ' ' + computerScore;
-  }
-  else if (playerSelection == 'scissors' && computerSelection == 'rock') {
-    computerScore++;
-    return playerScore + ' ' + computerScore;
-  }
-  else if (playerSelection == 'scissors' && computerSelection == 'paper') {
-    playerScore++;
-    return playerScore + ' ' + computerScore;
-  }
-
-  else {
-    return 'Tie!';
-  }
-}
-
-
-
-
-// console.log(playRound(playerSelection, computerSelection));
-
-// function game() {
-//   // let rounds = 5;
-//   // for(let i = 0; i < 5; i++){
-//     // let playerSelection = prompt("Choose Rock, Paper or Scissors");
-//   let playerSelection = this.dataset.button;
-//     const computerSelection = computerPlay();
-//     console.log(playRound(playerSelection, computerSelection));
-//   // }
-//   if(computerScore > playerScore){
-//     console.log('You Lose!');
-//   }
-//   else if(computerScore < playerScore){
-//     console.log('You win!');
-//   }
-//   else{
-//     console.log('Tie!');
-//   }
-// }
-
-// game();
+const restart = document.querySelector('.restart-button');
 
 rock.addEventListener('click', playRound);
 paper.addEventListener('click', playRound);
 scissors.addEventListener('click', playRound);
+restart.addEventListener('click', game);
+
+
+// Declare function computerPlay
+function computerPlay() {
+  const number = Math.floor(Math.random() * 1000);
+  if (number % 3 === 0) {
+    return "rock";
+  }
+  if (number % 3 === 1) {
+    return "paper";
+  }
+  return "scissors";
+}
+// Call function computerPlay
+computerPlay();
+
+let playerScore = 0;
+let computerScore = 0;
+
+// Declare function  playRound with with playerSelection and computerSelection
+function playRound(playerSelection, computerSelection) {
+  playerSelection = this.dataset.button
+  playerSelection = playerSelection.toUpperCase();
+  computerSelection = computerPlay().toUpperCase();
+  
+  const resultPara = document.createElement("p");
+  results.prepend(resultPara);
+
+  const roundWinner = document.createElement('p');
+  results.prepend(roundWinner);
+
+  const finalWinner = document.createElement("p");
+  results.prepend(finalWinner);
+  finalWinner.style.fontSize = '2rem';
+  finalWinner.style.fontWeight = '900';
+  
+  
+  if (playerSelection === 'ROCK' && computerSelection === 'PAPER') {
+    computerScore++;
+    roundWinner.textContent += `${computerSelection} beats ${playerSelection}
+    (Player Score: ${playerScore}, Computer Score: ${computerScore})`
+    
+  }
+  else if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS') {
+    playerScore++;
+        roundWinner.textContent += `${playerSelection} beats ${computerSelection}
+    (Player Score: ${playerScore}, Computer Score: ${computerScore})`;
+
+
+  }
+  else if (playerSelection === 'PAPER' && computerSelection === 'ROCK') {
+    playerScore++;
+        roundWinner.textContent += `${playerSelection} beats ${computerSelection}
+    (Player Score: ${playerScore}, Computer Score: ${computerScore})`;
+
+
+  }
+  else if (playerSelection === 'PAPER' && computerSelection === 'SCISSORS') {
+    computerScore++;
+        roundWinner.textContent += `${computerSelection} beats ${playerSelection}
+    (Player Score: ${playerScore}, Computer Score: ${computerScore})`;
+
+
+  }
+  else if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK') {
+    computerScore++;
+        roundWinner.textContent += `${computerSelection} beats ${playerSelection}
+    (Player Score: ${playerScore}, Computer Score: ${computerScore})`;
+
+
+  }
+  else if (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') {
+    playerScore++;
+        roundWinner.textContent += `${playerSelection} beats ${computerSelection}
+    (Player Score: ${playerScore}, Computer Score: ${computerScore})`;
+
+
+  }
+
+  else {
+    resultPara.textContent += `Player selects ${playerSelection} and computer selects ${computerSelection}:`
+    roundWinner.textContent += `Tie!
+        (Player Score: ${playerScore}, Computer Score: ${computerScore})`; // displays tie
+
+  }
+    // CHECKS NUMBER OF ROUNDS IN PROPORTION TO WINS.
+    if (computerScore > playerScore && computerScore >= 5) {
+      finalWinner.textContent = `Computer Wins and You Lose!`;
+      restart.style.display = "block";
+      console.log("Computer Wins and You Lose!");
+      rock.removeEventListener("click", playRound);
+      paper.removeEventListener("click", playRound);
+      scissors.removeEventListener("click", playRound);
+    } else if (playerScore > computerScore && playerScore >= 5) {
+      finalWinner.textContent = `You Win and Computer Loses!`;
+      restart.style.display = "block";
+      console.log("You Win and Computer Loses!");
+      rock.removeEventListener("click", playRound);
+      paper.removeEventListener("click", playRound);
+      scissors.removeEventListener("click", playRound);
+    }
+
+}
+
+// RESTARTS GAME BY RELOADING THE PAGE
+function game() {
+  window.location.reload('true');
+}

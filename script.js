@@ -1,48 +1,72 @@
-const playerPoints = document.querySelector('#playerScore');
-const computerPoints = document.querySelector('#computerScore');
+// THIS IS THE FIRST FORM OF THE PROJECT, IT ONLY WORKS IN THE TERMINAL
+
+// Declare array variable with rock, paper, scissors
+const options = ["Rock", "Paper", "Scissors"];
+
+// Declare function computerPlay
+computerPlay = () => {
+  // Declare selection variable to store random selection from array variable
+  // Assign selection variable to random selection from array variable
+  const selection = options[Math.floor(Math.random() * options.length)];
+  // console.log(selection);
+  return selection;
+};
+// Call function computerPlay
+computerPlay();
+
 playerScore = 0;
 computerScore = 0;
 
-const rock = document.querySelector("#rock");
-const paper = document.querySelector("#paper");
-const scissors = document.querySelector("#scissors");
+// Declare function  playRound with with playerSelection and computerSelection
+function playRound(playerSelection, computerSelection) {
+  playerSelection = playerSelection.toLowerCase();
+  computerSelection = computerPlay().toLowerCase();
+  console.log(
+    "playerSelection: ",
+    playerSelection,
+    " computerSelection: ",
+    computerSelection
+  );
 
-let results = document.querySelector(".display-result");
-
-computerPlay = () => {
-  const options = ["Rock", "Paper", "Scissors"];
-  const selection = options[Math.floor(Math.random() * options.length)];
-  return selection;
-};
-
-computerPlay();
-
-playRound = (playerSelection, computerSelection) => {
-    computerSelection = computerPlay();
-    let scorePara = document.createElement('p');
-    results.appendChild(scorePara);
-
-  if (playerSelection === 'rock' && computerSelection === 'paper') {
-      computerPoints.textContent = computerScore++;
-      playerPoints.textContent = playerScore;
-      scorePara.textContent = "Paper beats Rock. Better luck next time."
-    // return playerScore + " " + computerScore;
-  } else if (playerSelection == rock && computerSelection == scissors) {
-    playerScore++;
-    return playerScore + " " + computerScore;
-  } else if (playerSelection == paper && computerSelection == rock) {
-    playerScore++;
-    return playerScore + " " + computerScore;
-  } else if (playerSelection == paper && computerSelection == scissors) {
+  if (playerSelection == "rock" && computerSelection == "paper") {
     computerScore++;
     return playerScore + " " + computerScore;
-  } else if (playerSelection == scissors && computerSelection == rock) {
+  } else if (playerSelection == "rock" && computerSelection == "scissors") {
+    playerScore++;
+    return playerScore + " " + computerScore;
+  } else if (playerSelection == "paper" && computerSelection == "rock") {
+    playerScore++;
+    return playerScore + " " + computerScore;
+  } else if (playerSelection == "paper" && computerSelection == "scissors") {
     computerScore++;
     return playerScore + " " + computerScore;
-  } else if (playerSelection == scissors && computerSelection == paper) {
+  } else if (playerSelection == "scissors" && computerSelection == "rock") {
+    computerScore++;
+    return playerScore + " " + computerScore;
+  } else if (playerSelection == "scissors" && computerSelection == "paper") {
     playerScore++;
     return playerScore + " " + computerScore;
   } else {
     return "Tie!";
   }
-};
+}
+
+// console.log(playRound(playerSelection, computerSelection));
+
+function game() {
+  let rounds = 5;
+  for (let i = 0; i < 5; i++) {
+    let playerSelection = prompt("Choose Rock, Paper or Scissors");
+    const computerSelection = computerPlay();
+    console.log(playRound(playerSelection, computerSelection));
+  }
+  if (computerScore > playerScore) {
+    console.log("You Lose!");
+  } else if (computerScore < playerScore) {
+    console.log("You win!");
+  } else {
+    console.log("Tie!");
+  }
+}
+
+game();

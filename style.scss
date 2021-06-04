@@ -48,8 +48,18 @@
 
 .restart-button{
     text-align: center;
+    display: none;
 }
 
-.game{
+.restart-game{
     font-size: 1.6rem;
+}
+
+.head{
+    display: flex;
+    justify-content: space-between;
+}
+
+.display-result{
+    text-align: center;
 }

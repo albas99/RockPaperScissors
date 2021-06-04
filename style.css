@@ -58,9 +58,23 @@
 
 .restart-button {
   text-align: center;
+  display: none;
 }
 
-.game {
+.restart-game {
   font-size: 1.6rem;
+}
+
+.head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.display-result {
+  text-align: center;
 }
 /*# sourceMappingURL=style.css.map */
