@@ -119,3 +119,5 @@ function playRound(playerSelection, computerSelection) {
 function game() {
   window.location.reload('true');
 }
+
+// TODO Refactor using the following implementations from https://discord.com/channels/735923219315425401/763129518780842016/852248588720668722
